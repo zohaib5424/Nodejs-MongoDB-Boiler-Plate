@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "6ec46a6a-0dab-4f60-8e3c-8008dd5cf32f",
+		"name": "User Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13024003",
+		"_collection_link": "https://harisdev.postman.co/workspace/Fintech~64c62be3-04b5-4f4a-95be-498d5556a60a/collection/13024003-6ec46a6a-0dab-4f60-8e3c-8008dd5cf32f?action=share&source=collection_link&creator=13024003"
+	},
+	"item": [
+		{
+			"name": "Send Registration OTP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"harisbakhabarpk@gmail.com\",\n    //\"phoneno\": \"<phone number>\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/sendotp",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"sendotp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Confirm Registration OTP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"otp\": \"n36tlx\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/confirmotp",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"confirmotp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"Haris\",\n    \"lastname\": \"Abbasi\",\n    \"email\": \"harisbakhabarpk@gmail.com\",\n    \"address\": \"House#370, St#5, G-10/1\",\n    \"phoneno\": \"923359037389\",\n    \"role\": \"65783bc79de5ab5c58fc31bc\",\n    \"password\": \"Hahahaha88*\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"harisbakhabarpk@gmail.com\",\n    //\"phoneno\": \"<phone number>\",\n    \"password\": \"Hahaha88*\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forget Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"harisbakhabarpk@gmail.com\"\n    //\"phoneno\": \"<phone number>\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/forgetpassword",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"forgetpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify OTP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"resetPasswordOtp\": \"uwno0n\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/verifyotp",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"verifyotp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"otp\": \"uwno0n\",\n    \"password\": \"Hahaha88*\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/resetpassword",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"resetpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Roles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/user/roles",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"roles"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
