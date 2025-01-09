@@ -1,40 +1,75 @@
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
-var user = new Schema({
-	firstname: {
-		type: String,
-		required: true,
+var user = new Schema(
+	{
+		firstName: {
+			type: String,
+			required: true,
+		},
+		lastName: {
+			type: String,
+			required: true,
+		},
+		userName: {
+			type: String,
+			required: true,
+		},
+		gender: {
+			type: String,
+		},
+		email: {
+			type: String,
+			required: true,
+		},
+		phoneNum: {
+			type: String,
+			required: true,
+		},
+		password: {
+			type: String,
+			required: true,
+		},
+		role: {
+			type: String,
+			default: 'USER',
+			enum: ['USER', 'ADMIN'],
+		},
+		profilePic: {
+			type: String,
+		},
+		address: {
+			type: String,
+			required: true,
+		},
+		zipCode: {
+			type: String,
+		},
+		country: {
+			type: String,
+		},
+		state: {
+			type: String,
+		},
+		city: {
+			type: String,
+		},
+		isDeleted: {
+			type: Boolean,
+			default: false,
+		},
+		resetPasswordOtp: {
+			type: String,
+		},
+		otpCreatedAt: { type: Date },
+		dob: {
+			type: Date,
+		},
+
+		twofaSecret: { type: String }, // Google Authenticator secret key
+		twofaEnabled: { type: Boolean, default: false },
 	},
-	lastname: {
-		type: String,
-		required: true,
-	},
-	gender: String,
-	email: {
-		type: String,
-		required: false,
-	},
-	phoneNo: {
-		type: String,
-		required: false,
-	},
-	password: {
-		type: String,
-		required: true,
-	},
-	role: {
-		type: String,
-		default: 'USER',
-		enum: ['USER', 'ADMIN'],
-	},
-	profilepic: String,
-	address: String,
-	isDeleted: {
-		type: Boolean,
-		default: false,
-	},
-	resetPasswordOtp: String,
-});
+	{ timestamps: true }
+);
 
 module.exports = mongoose.model('User', user);
