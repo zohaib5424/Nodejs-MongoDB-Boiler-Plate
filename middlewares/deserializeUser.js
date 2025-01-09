@@ -4,7 +4,7 @@ const User = require('../models/user.model');
 class AppError extends Error {
 	constructor(message, statusCode = 500) {
 		super(message);
-		this.status = `${statusCode}`.sstartsWith('4') ? 'fail' : 'error';
+		this.status = `${statusCode}`.startsWith('4') ? 'fail' : 'error';
 		this.isOperational = true;
 
 		Error.captureStackTrace(this, this.constructor);
@@ -35,10 +35,14 @@ const deserializeUser = async (req, res, next) => {
 		}
 		let decoded;
 		try {
+			const jwtSecret =
+				req.path === '/verify-otp'
+					? process.env.LOGIN_JWT_SECRET
+					: process.env.JWT_SECRET;
 			// Validate the Access Token
-			decoded = jwt.verify(accessToken, process.env.JWT_SECRET);
+			decoded = jwt.verify(accessToken, jwtSecret);
 		} catch (e) {
-			console.error('Error validating JWT:', e);
+			console.error('Error validating JWT: Invalid or expired token.');
 			return next(
 				new AppError('Invalid or expired token. Please log in again.', 401)
 			);
@@ -49,7 +53,6 @@ const deserializeUser = async (req, res, next) => {
 
 		// Fetch User from Database (Optional if all required data is in the token)
 		const user = await User.findById(userId);
-		console.log('user: ', user);
 
 		if (!user) {
 			return next(
